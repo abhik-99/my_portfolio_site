@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import * as React from 'react';
+import {css} from "@emotion/react";
 
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
@@ -32,7 +33,9 @@ const TabView = () => {
             <Tab icon={<VolunteerActivismTwoToneIcon />} aria-label="Volunteer" value="2" />
           </TabList>
         </Box>
-        <TabPanel value="1">
+        <TabPanel value="1" css={css`
+					padding-left: 0;
+        `}>
           <TabPanelView title="Work" dataList={work} />
         </TabPanel>
         <TabPanel value="2">
