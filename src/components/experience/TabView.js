@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import {css} from "@emotion/react";
 import * as React from 'react';
 
 import Box from '@mui/material/Box';
@@ -11,7 +10,9 @@ import { useTheme } from '@mui/system';
 
 import WorkTwoToneIcon from '@mui/icons-material/WorkTwoTone';
 import VolunteerActivismTwoToneIcon from '@mui/icons-material/VolunteerActivismTwoTone';
-import { Grid, Paper, Typography } from "@mui/material";
+
+import { volunteer, work } from "./experiences";
+import TabPanelView from "./TabPanelView";
 
 
 const TabView = () => {
@@ -21,6 +22,7 @@ const TabView = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
 	return (
 		<Box sx={{ width: '100%', typography: 'body1', marginTop: theme.spacing(1) }}>
       <TabContext value={value} >
@@ -31,27 +33,10 @@ const TabView = () => {
           </TabList>
         </Box>
         <TabPanel value="1">
-          <Grid container>
-            <Grid item xs={12} md={4} lg={2} align="center">
-              <Paper css={css`padding: ${theme.spacing(2)}; background: ${theme.palette.primary.main}; color: ${theme.palette.primary.contrastText}`}>
-                <Typography variant="h6">Work</Typography>
-              </Paper>
-            </Grid>
-
-          </Grid>
-
+          <TabPanelView title="Work" dataList={work} />
         </TabPanel>
         <TabPanel value="2">
-          <Grid container>
-            <Grid item xs={12} md={4} lg={2} align="center">
-              <Paper css={css`padding: ${theme.spacing(2)}; background: ${theme.palette.primary.main}; color: ${theme.palette.primary.contrastText}`}>
-                <Typography variant="h6">Volunteer</Typography>
-              </Paper>
-            </Grid>
-
-          </Grid>
-
-
+          <TabPanelView title="Volunteer" dataList={volunteer} />
         </TabPanel>
       </TabContext>
     </Box>

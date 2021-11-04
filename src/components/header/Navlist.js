@@ -6,6 +6,9 @@ exports.navlist = [
         name: "Experience"
     },
     {
+        name: "Research"
+    },
+    {
         name: "Blogs"
     },
     {
