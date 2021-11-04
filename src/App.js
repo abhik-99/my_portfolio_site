@@ -19,7 +19,7 @@ function App() {
   const [themeMode, setThemeMode] = useState(true); // true -> light | false -> dark
   const [extraMode, setExtraMode] = useState(true); // true -> normal | false -> glassmorphic
 
-  const theme = createTheme({
+  let theme = createTheme({
     palette: {
       mode: themeMode ? "light" : "dark",
       extra: extraMode ? "normal" : "glass",
@@ -29,8 +29,25 @@ function App() {
       secondary: {
         main: themeMode ? "#880e4f" : "#651fff"
       }
+    },
+  });
+
+  theme = createTheme(theme, {
+    components: {
+      MuiTab: {
+        styleOverrides: {
+          root:{
+            "&.Mui-selected": {
+              backgroundColor: theme.palette.secondary.main,
+              color: theme.palette.secondary.contrastText,
+              borderRadius: "25px"
+            }
+          }
+        }
+      }
     }
   })
+
   console.log(useMediaQuery(theme.breakpoints.down("xs")), useMediaQuery(theme.breakpoints.down("sm")), useMediaQuery(theme.breakpoints.down("md")), useMediaQuery(theme.breakpoints.down("lg")), useMediaQuery(theme.breakpoints.down("xl")));
   console.log(theme);
   return (
