@@ -28,7 +28,12 @@ const TabView = () => {
 		<Box sx={{ width: '100%', typography: 'body1', marginTop: theme.spacing(1) }}>
       <TabContext value={value} >
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <TabList onChange={handleChange} aria-label="experience tab" indicatorColor="none">
+          <TabList onChange={handleChange} aria-label="experience tab"
+          TabIndicatorProps={{
+            style: {
+              display: "none"
+            }
+          }}>
             <Tab icon={<WorkTwoToneIcon />} aria-label="work" value="1" />
             <Tab icon={<VolunteerActivismTwoToneIcon />} aria-label="Volunteer" value="2" />
           </TabList>

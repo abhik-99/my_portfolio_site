@@ -5,7 +5,7 @@ import {
   Paper,
   useMediaQuery
 } from "@mui/material";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 
 
 import squid_game_light from "./assets/images/squid_game_light.png";
@@ -42,12 +42,13 @@ function App() {
               backgroundColor: theme.palette.secondary.main,
               color: theme.palette.secondary.contrastText,
               borderRadius: "25px"
-            }
+            },
           }
         }
       }
     }
   })
+  theme = responsiveFontSizes(theme);
 
   console.log(useMediaQuery(theme.breakpoints.down("xs")), useMediaQuery(theme.breakpoints.down("sm")), useMediaQuery(theme.breakpoints.down("md")), useMediaQuery(theme.breakpoints.down("lg")), useMediaQuery(theme.breakpoints.down("xl")));
   console.log(theme);

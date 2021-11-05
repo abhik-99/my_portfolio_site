@@ -1,31 +1,43 @@
 /** @jsxImportSource @emotion/react */
+import * as React from 'react';
 import {css} from "@emotion/react";
+import { useState } from "react";
 import {
   AppBar,
   Button,
   Container,
   Stack,
   Toolbar,
-  ButtonGroup
+  ButtonGroup,
+	IconButton,
+	Paper,
 } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
-import { navlist } from "./Navlist";
+import navlist from "./Navlist";
 
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import ChangeHistoryOutlinedIcon from '@mui/icons-material/ChangeHistoryOutlined';
 import StarBorderPurple500OutlinedIcon from '@mui/icons-material/StarBorderPurple500Outlined';
 import BeachAccessOutlinedIcon from '@mui/icons-material/BeachAccessOutlined';
+import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
+import MenuIcon from '@mui/icons-material/Menu';
+import CustomDrawer from "./CustomDrawer";
 
 const Header = (props) => {
+	const [open, setOpen] = React.useState(false);
 	const theme = useTheme();
 	const { theme1, theme2, theme3, theme4 } = props;
+	const toggleDrawer = (value) => {
+		setOpen(value);
+	};
+
 	return (
 		<AppBar
 		color="primary"
 		position="static"
 		enableColorOnDark
 		>
-			<Toolbar align="center">
+			<Toolbar sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
 				<ButtonGroup variant="contained" color="secondary">
 					<Button>
 						<CircleOutlinedIcon onClick={theme1}/>
@@ -40,18 +52,31 @@ const Header = (props) => {
 						<BeachAccessOutlinedIcon onClick={theme4}/>
 					</Button>
 				</ButtonGroup>
+				<Paper sx={{ background: 'none', display: {xs: 'block', md: 'none'}}} elevation={0}>
+					<IconButton variant="outlined" color="secondary">
+						<MoreVertTwoToneIcon onClick={() => toggleDrawer(true)}/>
+					</IconButton>
+				</Paper>
+				<Paper sx={{ background: 'none', display: {xs: 'none', md: 'block', lg: 'none'}}} elevation={0}>
+					<Button variant="contained" color="secondary">
+						<MenuIcon onClick={() => toggleDrawer(true)}/>
+					</Button>
+				</Paper>
 			</Toolbar>
-			<Container>
-				<Stack direction="row" spacing={2} justifyContent="center">
-					{
-						navlist.map((link, index) =>
-						<Button variant="contained" css={css`text-transform: none; background: linear-gradient(to top, rgba(0, 0, 0, 0.2), ${theme.palette.primary.main})`} key={"nav" + index}>
-							<b>{link.name}</b>
-						</Button>
-						)
-					}
-				</Stack>
-			</Container>
+			<Paper sx={{background: "none", display: { xs: 'none', lg: 'block'}}} elevation={0}>
+				<Container>
+					<Stack direction="row" spacing={2} justifyContent="center">
+						{
+							navlist.map((link, index) =>
+							<Button variant="contained" css={css`text-transform: none; background: linear-gradient(to top, rgba(0, 0, 0, 0.2), ${theme.palette.primary.main})`} key={"nav" + index}>
+								<b>{link.name}</b>
+							</Button>
+							)
+						}
+					</Stack>
+				</Container>
+			</Paper>
+			<CustomDrawer open={open} toggleDrawer={toggleDrawer} />
 		</AppBar>
 	)
 }

@@ -10,7 +10,8 @@ import {
   Paper,
   Typography,
 	Grow,
-	Fade
+	Fade,
+	useMediaQuery
 } from "@mui/material";
 
 import { useTheme } from '@mui/material/styles';
@@ -28,7 +29,7 @@ const AboutMe = () => {
 						<ButtonBase css={css`border-radius: 50%;`}>
 							<img src={me_devfest} alt="Abhik Banerjee" css={css`
 							border-radius: 50%;
-							height: 500px;
+							height: ${useMediaQuery(theme.breakpoints.up("md")) ? "400px" : "250px"}
 							`}/>
 						</ButtonBase>
 					</Grow>
