@@ -43,6 +43,14 @@ const TabPanelView = (props) => {
 					</ListItem>
 					)
 				}
+				{
+					dataList.length === 0 &&
+					<ListItem key={`research-none-${title}`} disablePadding>
+						<ListItemText>
+							No current works under this category. Check back later :)
+						</ListItemText>
+					</ListItem>
+				}
 
 			</List>
 			</Container>

@@ -19,8 +19,9 @@ const Research = () => {
 		background-image: url(${ theme.palette.mode === "light" && theme.palette.extra === "glass" ? background_light : (theme.palette.mode === "dark" && theme.palette.extra === "glass" ? background_dark : 'none')});
 		background-color: linear-gradient(to top, ${Color(theme.palette.background.paper).alpha(0.6).toString()}, ${Color(theme.palette.background.paper).alpha(0.1).toString()});
 		background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
+		background-position: center;
+		background-size: cover;
+		padding-bottom: ${theme.spacing(10)};
 		`}>
 			<Container css={css`
 			padding: ${theme.spacing(4)} 0;

@@ -15,6 +15,8 @@ const Experience = () => {
 	return (
 		<Container css={css`
 		padding: ${theme.spacing(4)} 0;
+		margin-top: ${theme.spacing(4)};
+		margin-bottom: ${theme.spacing(10)};
 		`}>
 			<Paper css={css`
 			padding: ${theme.spacing(4)};

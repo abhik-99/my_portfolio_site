@@ -53,13 +53,13 @@ const Header = (props) => {
 					</Button>
 				</ButtonGroup>
 				<Paper sx={{ background: 'none', display: {xs: 'block', md: 'none'}}} elevation={0}>
-					<IconButton variant="outlined" color="secondary">
-						<MoreVertTwoToneIcon onClick={() => toggleDrawer(true)}/>
+					<IconButton variant="outlined" color="secondary" onClick={() => toggleDrawer(true)}>
+						<MoreVertTwoToneIcon />
 					</IconButton>
 				</Paper>
 				<Paper sx={{ background: 'none', display: {xs: 'none', md: 'block', lg: 'none'}}} elevation={0}>
-					<Button variant="contained" color="secondary">
-						<MenuIcon onClick={() => toggleDrawer(true)}/>
+					<Button variant="contained" color="secondary"  onClick={() => toggleDrawer(true)}>
+						<MenuIcon />
 					</Button>
 				</Paper>
 			</Toolbar>

@@ -32,7 +32,12 @@ const TabView = () => {
 				<Grid container spacing={1}>
 					<Grid item xs={12} sm={3} lg={2} >
 					<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-						<TabList orientation="vertical" onChange={handleChange} aria-label="experience tab" indicatorColor="none" >
+						<TabList orientation="vertical" onChange={handleChange} aria-label="experience tab"
+						TabIndicatorProps={{
+							style: {
+							  display: "none"
+							}
+						}}>
 							<Tab icon={<MenuBookTwoToneIcon />} aria-label="published" value="1" />
 							<Divider />
 							<Tab icon={<BorderColorTwoToneIcon />} aria-label="in press" value="2" />
@@ -42,21 +47,21 @@ const TabView = () => {
 					</Box>
 					</Grid>
 					<Grid item xs={12} sm={9} ls={10}>
-					<TabPanel value="1" css={css`
-					padding-top: 0;
-					`}>
-						<TabPanelView title="Published" dataList={papers.filter(paper => paper.published)}/>
-					</TabPanel>
-					<TabPanel value="2" css={css`
-					padding-top: 0;
-					`}>
-						<TabPanelView title="In Press" dataList={papers.filter(paper => paper.inPress)}/>
-					</TabPanel>
-					<TabPanel value="3" css={css`
-					padding-top: 0;
-					`}>
-						<TabPanelView title="Under Review" dataList={papers.filter(paper => paper.underReview)}/>
-					</TabPanel>
+						<TabPanel value="1" css={css`
+						padding-top: 0;
+						`}>
+							<TabPanelView title="Published" dataList={papers.filter(paper => paper.published)}/>
+						</TabPanel>
+						<TabPanel value="2" css={css`
+						padding-top: 0;
+						`}>
+							<TabPanelView title="In Press" dataList={papers.filter(paper => paper.inPress)}/>
+						</TabPanel>
+						<TabPanel value="3" css={css`
+						padding-top: 0;
+						`}>
+							<TabPanelView title="Under Review" dataList={papers.filter(paper => paper.underReview)}/>
+						</TabPanel>
 					</Grid>
 				</Grid>
       </TabContext>

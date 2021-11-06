@@ -37,7 +37,7 @@ const TabPanelView = (props) => {
 				{dataList.map((each, index)=>{
 					// console.log(index);
 					return (
-						<Accordion expanded={expanded === index} onChange={handleAccordionChange(index)} >
+						<Accordion expanded={expanded === index} onChange={handleAccordionChange(index)} key={"experience"+title+index}>
 							<AccordionSummary
 							expandIcon={<ExpandMoreTwoTone color='warning'/>}
 							aria-controls="panel1a-content"
