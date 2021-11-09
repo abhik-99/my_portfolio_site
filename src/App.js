@@ -16,6 +16,7 @@ import Experience from "./components/experience/Experience";
 import Header from "./components/header/Header";
 import Research from "./components/research/Research";
 import Blogs from "./components/blogs/Blogs";
+import Honours from "./components/honours/Honours";
 
 function App() {
   const [themeMode, setThemeMode] = useState(true); // true -> light | false -> dark
@@ -69,6 +70,7 @@ function App() {
       <Experience />
       <Research />
       <Blogs />
+      <Honours />
     </Paper>
     </ThemeProvider>
   );
