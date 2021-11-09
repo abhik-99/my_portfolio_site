@@ -26,7 +26,7 @@ export default function CustomDrawer(props) {
       <Divider />
       <List>
         {navlist.map((link, index) => (
-          <ListItem button key={"drawer-"+index}>
+          <ListItem button key={"drawer-"+index} onClick={link.onClick}>
             <ListItemIcon>
               {link.icon}
             </ListItemIcon>

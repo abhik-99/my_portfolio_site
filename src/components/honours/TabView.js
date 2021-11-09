@@ -10,6 +10,8 @@ import { Grid, Divider, Typography, Paper, Button, Stack } from '@mui/material';
 import TabPanelView from "./TabPanelView";
 import Color from "color";
 import { papers } from '../research/papers';
+import { certificates, honours } from "./honours";
+import CardViewPanel from "./CardViewPanel";
 
 const TabView = () => {
 	const theme = useTheme();
@@ -19,7 +21,7 @@ const TabView = () => {
 		<Box sx={{ width: '100%', typography: 'body1', marginTop: theme.spacing(1) }}>
 				<Grid container spacing={1}>
 					<Grid item xs={12} sm={3}  lg={2}>
-					<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+					<Box sx={{ borderBottom: 1, borderColor: theme.palette.background.paper }}>
 						<Stack>
 							<Button variant="contained" color="secondary" css={css`
 								background: ${value === 0 ? null : Color(theme.palette.background.paper).alpha(0.12).toString()};
@@ -34,10 +36,11 @@ const TabView = () => {
 							</Button>
 							<Button variant="contained" color="secondary" css={css`
 								background: ${value === 1 ? null : Color(theme.palette.background.paper).alpha(0.12).toString()};
-								color: ${value === 1 ? null : Color(theme.palette.text.primary).alpha(0.26).toString()};
+								color: ${value === 1 ? null : Color(theme.palette.text.primary).alpha(0.50).toString()};
 								border-radius: 0 0 50% 50% / 0 0 100% 100%;
 								border-top: 0;
 								text-transform: none;
+								box-shadow: 0 5px 15px ${Color(theme.palette.secondary.main).alpha(40)};
 							`}
 							onClick={() => setValue(1)}
 							>
@@ -47,16 +50,16 @@ const TabView = () => {
 					</Box>
 					</Grid>
 					<Grid item xs={12} sm={9} ls={10}>
-						<Paper>
+						{/* <Paper> */}
 							{
 								value === 0 &&
-								<TabPanelView dataList={papers}/>
+								<TabPanelView dataList={honours} />
 							}
 							{
 								value === 1 &&
-								<Typography>Certs</Typography>
+								<CardViewPanel dataList={certificates} />
 							}
-						</Paper>
+						{/* </Paper> */}
 					</Grid>
 				</Grid>
     </Box>

@@ -8,27 +8,27 @@ import ContactPhoneTwoToneIcon from '@mui/icons-material/ContactPhoneTwoTone';
 const navlist = [
 	{
 		name: "About",
-		icon: <HomeTwoToneIcon />
+		icon: <HomeTwoToneIcon />,
 	},
 	{
 		name: "Experience",
-		icon: <EmojiPeopleTwoToneIcon />
+		icon: <EmojiPeopleTwoToneIcon />,
 	},
 	{
 		name: "Research",
-		icon: <LocalLibraryTwoToneIcon />
+		icon: <LocalLibraryTwoToneIcon />,
 	},
 	{
 		name: "Blogs",
-		icon: <BookTwoToneIcon />
+		icon: <BookTwoToneIcon />,
 	},
 	{
 		name: "Honours",
-		icon: <StarHalfTwoToneIcon />
+		icon: <StarHalfTwoToneIcon />,
 	},
 	{
 		name: "Contact",
-		icon: <ContactPhoneTwoToneIcon />
+		icon: <ContactPhoneTwoToneIcon />,
 	}
 ];
 

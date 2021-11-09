@@ -32,7 +32,7 @@ const TabView = () => {
 				<Grid container spacing={1}>
 					<Grid item xs={12} sm={3} lg={2} >
 					<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-						<TabList orientation="vertical" onChange={handleChange} aria-label="experience tab"
+						<TabList orientation="vertical" onChange={handleChange} aria-label="research tab"
 						TabIndicatorProps={{
 							style: {
 							  display: "none"

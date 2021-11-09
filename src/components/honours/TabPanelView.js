@@ -1,60 +1,76 @@
 /** @jsxImportSource @emotion/react */
 import {css} from "@emotion/react";
+import * as React from 'react';
+
 import { useTheme } from '@mui/system';
+
 import {
-	Typography,
-	List,
-	ListItem,
-	ListItemText,
-	Paper,
-	Container,
-	ListItemIcon
-} from '@mui/material';
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Grid,
+  Paper,
+  Typography,
+  Container
+} from "@mui/material";
 
+import { ExpandMoreTwoTone } from "@mui/icons-material";
 
-import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 
 const TabPanelView = (props) => {
-	const { title, dataList } = props;
+	const { title, dataList} = props;
 	const theme = useTheme();
+  const [expanded, setExpanded] = React.useState(-1);
+
+  const handleAccordionChange = (panel) => (event, newExpanded) => {
+		setExpanded(newExpanded ? panel : false);
+	};
 	return (
-		<Paper css={css`
-		border-radius: ${theme.shape.borderRadius};
-		padding-top: ${theme.spacing(1)}
-		`}>
-			<Container>
+		<Container>
+			{dataList.map((each, index)=>{
+				// console.log(index);
+				return (
+					<Accordion expanded={expanded === index} onChange={handleAccordionChange(index)} key={"experience"+title+index}>
+						<AccordionSummary
+						expandIcon={<ExpandMoreTwoTone color='warning'/>}
+						aria-controls="panel1a-content"
+						id="panel1a-header"
+						>
+							<Container align='left'>
+								<Typography variant='h6' color='primary'>{each.title}</Typography>
+								{expanded !== index &&
+								<>
+									<Typography variant='subtitle1' >{each.year}</Typography>
+									<Typography variant='subtitle2' >{each.from}</Typography>
+								</>
+								}
+							</Container>
 
-			<List>
-				{
-					dataList.map((each, index) =>
-
-					<ListItem key={'research-'+index} disablePadding>
-						<ListItemIcon>
-							<SendOutlinedIcon fontSize="small" color="warning" />
-						</ListItemIcon>
-						<ListItemText>
-							{
-								(each.patent || each.copyright) &&
-								`Registration Number: ${each.regNumber} `
-							}
-							{each.citation}
-						</ListItemText>
-					</ListItem>
-					)
-				}
-				{
-					dataList.length === 0 &&
-					<ListItem key={`research-none-${title}`} disablePadding>
-						<ListItemText>
-							No current works under this category. Check back later :)
-						</ListItemText>
-					</ListItem>
-				}
-
-			</List>
-			</Container>
-		</Paper>
+						</AccordionSummary>
+						<AccordionDetails>
+							<Grid container spacing={2} style={{ paddingLeft: theme.spacing(3), paddingRight: theme.spacing(2)}} align='left'>
+								<Grid item xs={12} md={9}>
+									<Typography >
+										<b>{each.from}</b>
+									</Typography>
+								</Grid>
+								<Grid item xs={12} md={3}>
+									<Typography >
+											<i>{each.year}</i>
+									</Typography>
+								</Grid>
+								<Grid item xs={12}>
+									<Typography >
+											{each.description}
+									</Typography>
+								</Grid>
+							</Grid>
+						</AccordionDetails>
+					</Accordion>
+				)
+			})}
+		</Container>
 	)
 }
 
-export default TabPanelView
+export default TabPanelView;

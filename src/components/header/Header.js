@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import * as React from 'react';
 import {css} from "@emotion/react";
-import { useState } from "react";
 import {
   AppBar,
   Button,
@@ -23,6 +22,10 @@ import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import MenuIcon from '@mui/icons-material/Menu';
 import CustomDrawer from "./CustomDrawer";
 
+import {
+	useScrollSections,
+} from 'react-scroll-section';
+
 const Header = (props) => {
 	const [open, setOpen] = React.useState(false);
 	const theme = useTheme();
@@ -30,7 +33,13 @@ const Header = (props) => {
 	const toggleDrawer = (value) => {
 		setOpen(value);
 	};
+	const sections = useScrollSections();
+	const navSections = navlist.map((nav, index) => {
+		const section = sections.filter(item => item.id === nav.name)[0];
+		return { ...nav, ...section}
+	});
 
+	console.log("HEADER Sections", navSections);
 	return (
 		<AppBar
 		color="primary"
@@ -67,8 +76,8 @@ const Header = (props) => {
 				<Container>
 					<Stack direction="row" spacing={2} justifyContent="center">
 						{
-							navlist.map((link, index) =>
-							<Button variant="contained" css={css`text-transform: none; background: linear-gradient(to top, rgba(0, 0, 0, 0.2), ${theme.palette.primary.main})`} key={"nav" + index}>
+							navSections.map((link, index) =>
+							<Button variant="contained" css={css`text-transform: none; background: linear-gradient(to top, rgba(0, 0, 0, 0.2), ${theme.palette.primary.main})`} key={"nav" + index} onClick={link.onClick}>
 								<b>{link.name}</b>
 							</Button>
 							)

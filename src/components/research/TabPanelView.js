@@ -33,7 +33,9 @@ const TabPanelView = (props) => {
 						<ListItemIcon>
 							<SendOutlinedIcon fontSize="small" color="warning" />
 						</ListItemIcon>
-						<ListItemText>
+						<ListItemText css={css`
+						word-wrap: break-word;
+						`}>
 							{
 								(each.patent || each.copyright) &&
 								`Registration Number: ${each.regNumber} `

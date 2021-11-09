@@ -26,7 +26,7 @@ const Honours = () => {
 			border-radius: ${theme.shape.borderRadius}
 			`}>
 				<Typography variant="h2">
-					My Blogs
+					My Accomplishments
 				</Typography>
                 <TabView />
 			</Paper>
