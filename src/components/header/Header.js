@@ -114,7 +114,7 @@ const Header = (props) => {
 								</Button>
 								)
 							}
-							<Button startIcon={<DownloadTwoToneIcon />} download variant="contained" css={css`text-transform: none; background: linear-gradient(to top, rgba(0, 0, 0, 0.2), ${theme.palette.primary.main})`}>Resume</Button>
+							<Button href="../../assets/docs/Abhik Banerjee.pdf" target="_blank" startIcon={<DownloadTwoToneIcon />} download variant="contained" css={css`text-transform: none; background: linear-gradient(to top, rgba(0, 0, 0, 0.2), ${theme.palette.primary.main})`}>Resume</Button>
 						</Stack>
 					</Container>
 				</Paper>
