@@ -3,7 +3,6 @@ import { useState } from "react";
 import {css} from "@emotion/react";
 import {
   Paper,
-  useMediaQuery,
   Typography
 } from "@mui/material";
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
@@ -65,15 +64,20 @@ function App() {
   })
   theme = responsiveFontSizes(theme);
 
-  console.log(useMediaQuery(theme.breakpoints.down("xs")), useMediaQuery(theme.breakpoints.down("sm")), useMediaQuery(theme.breakpoints.down("md")), useMediaQuery(theme.breakpoints.down("lg")), useMediaQuery(theme.breakpoints.down("xl")));
-  console.log(theme);
+  // console.log(useMediaQuery(theme.breakpoints.down("xs")), useMediaQuery(theme.breakpoints.down("sm")), useMediaQuery(theme.breakpoints.down("md")), useMediaQuery(theme.breakpoints.down("lg")), useMediaQuery(theme.breakpoints.down("xl")));
+  // console.log(theme);
+
+
+  console.log("闩⻏卄讠长  乃讠ᗪ丂  ㄚㄖ!");
+  console.log("https://www.youtube.com/watch?v=-jaCwUA80XM")
+
   return (
     <ScrollingProvider>
       <ThemeProvider theme={theme}>
         <Paper css={css`
         min-height: 100vh;
         min-width: 100%;
-        background-image: ${themeMode && !extraMode ? `url(${squid_game_light})` : (!themeMode && !extraMode ? `url(${squid_game_dark})` : null)};
+        background-image: ${theme.palette.extra === 'glass' ? `${theme.palette.mode === 'light' ? `url(${squid_game_light})` : `url(${squid_game_dark})`}` : `none`};
         background-attachment: fixed;
         background-position: center;
         background-size: cover;
@@ -102,7 +106,7 @@ function App() {
             <Contact />
           </Section>
           <Box sx={{align: "center"}}>
-            <Typography variant="caption2">Made By Abhik Banerjee using React and MUI v5. Open Sourced <a href="https://github.com/abhik-99/my_portfolio_site" target="_blank">here</a></Typography>
+            <Typography variant="caption2">Made By Abhik Banerjee using React and MUI v5. Open Sourced <a href="https://github.com/abhik-99/my_portfolio_site" target="_blank" rel="noreferrer">here</a></Typography>
           </Box>
         </Paper>
       </ThemeProvider>
@@ -111,3 +115,5 @@ function App() {
 }
 
 export default App;
+
+

@@ -8,7 +8,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { useTheme } from '@mui/system';
-import { Typography, Grid, Divider } from '@mui/material';
+import { Grid, Divider } from '@mui/material';
 
 
 import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone';
@@ -31,21 +31,21 @@ const TabView = () => {
       <TabContext value={value} >
 				<Grid container spacing={1}>
 					<Grid item xs={12} sm={3} lg={2} >
-					<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-						<TabList orientation="vertical" onChange={handleChange} aria-label="research tab"
-						TabIndicatorProps={{
-							style: {
-							  display: "none"
-							}
-						}}
-						>
-							<Tab icon={<MenuBookTwoToneIcon />} aria-label="published" value="1" />
-							<Divider />
-							<Tab icon={<BorderColorTwoToneIcon />} aria-label="in press" value="2" />
-							<Divider />
-							<Tab icon={<VisibilityTwoToneIcon />} aria-label="under review" value="3" />
-						</TabList>
-					</Box>
+						<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+							<TabList orientation="vertical" onChange={handleChange} aria-label="research tab"
+							TabIndicatorProps={{
+								style: {
+									display: "none"
+								}
+							}}
+							>
+								<Tab icon={<MenuBookTwoToneIcon />} aria-label="published" value="1" />
+								<Divider />
+								<Tab icon={<BorderColorTwoToneIcon />} aria-label="in press" value="2" />
+								<Divider />
+								<Tab icon={<VisibilityTwoToneIcon />} aria-label="under review" value="3" />
+							</TabList>
+						</Box>
 					</Grid>
 					<Grid item xs={12} sm={9} ls={10}>
 						<TabPanel value="1" css={css`

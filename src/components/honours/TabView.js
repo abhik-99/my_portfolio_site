@@ -9,7 +9,7 @@ import { Grid, Typography, Button, Stack } from '@mui/material';
 
 import TabPanelView from "./TabPanelView";
 import Color from "color";
-import { certificates, honours } from "./honours";
+import { certificates, honours } from "./accolades";
 import CardViewPanel from "./CardViewPanel";
 
 const TabView = () => {

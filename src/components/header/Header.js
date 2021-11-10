@@ -22,6 +22,8 @@ import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone';
 import MenuIcon from '@mui/icons-material/Menu';
 import CustomDrawer from "./CustomDrawer";
 
+import DownloadTwoToneIcon from '@mui/icons-material/DownloadTwoTone';
+
 import {
 	useScrollSections,
 } from 'react-scroll-section';
@@ -68,7 +70,6 @@ const Header = (props) => {
 		return { ...nav, ...section}
 	});
 
-	console.log("HEADER Sections", navSections);
 	return (
 		<>
 		<HideOnScroll {...props}>
@@ -113,6 +114,7 @@ const Header = (props) => {
 								</Button>
 								)
 							}
+							<Button startIcon={<DownloadTwoToneIcon />} download variant="contained" css={css`text-transform: none; background: linear-gradient(to top, rgba(0, 0, 0, 0.2), ${theme.palette.primary.main})`}>Resume</Button>
 						</Stack>
 					</Container>
 				</Paper>

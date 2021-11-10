@@ -72,7 +72,7 @@ const TabView = () => {
 					<List>
 					{
 						emails.map((item, index)=>
-						<ListItem key={"emails"+index}>
+						<ListItem key={"emails-"+index}>
 							<ListItemText  align="center">{index+1}. {item}</ListItemText>
 						</ListItem>
 						)
@@ -84,13 +84,13 @@ const TabView = () => {
 						<Grid container spacing={2}>
 						{
 							socials.map((item, index)=>
-							<Grid item xs={12} sm={6} md={4}>
-							<ListItem key={"socials"+index} component="a" href={item.link} target="_blank">
-								<ListItemButton >
-									<ListItemIcon >{item.icon}</ListItemIcon>
-									<ListItemText ><Typography color='text.primary'>{item.name}</Typography></ListItemText>
-								</ListItemButton>
-							</ListItem>
+							<Grid key={"socials-"+index} item xs={12} sm={6} md={4}>
+								<ListItem component="a" href={item.link} target="_blank">
+									<ListItemButton >
+										<ListItemIcon >{item.icon}</ListItemIcon>
+										<ListItemText ><Typography color='text.primary'>{item.name}</Typography></ListItemText>
+									</ListItemButton>
+								</ListItem>
 							</Grid>
 							)
 						}

@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+import {css} from "@emotion/react";
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
@@ -9,6 +11,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import DownloadTwoToneIcon from '@mui/icons-material/DownloadTwoTone';
 
 import { useTheme } from '@emotion/react';
 
@@ -51,6 +54,9 @@ export default function CustomDrawer(props) {
           </Button>
         </Box>
         {list()}
+        <Box sx={{ display: 'flex' , justifyContent: "center", padding: theme.spacing(1)}}>
+          <Button startIcon={<DownloadTwoToneIcon />} download variant="contained" css={css`text-transform: none;`}>Resume</Button>
+        </Box>
       </SwipeableDrawer>
     </div>
   );

@@ -11,14 +11,18 @@ import {
   Typography,
 	Grow,
 	Fade,
-	useMediaQuery
+	useMediaQuery,
+	IconButton
 } from "@mui/material";
 
 import { useTheme } from '@mui/material/styles';
 import me_devfest from "../../assets/images/abhik_banerjee_devfest.jpeg";
+import { useScrollSection } from "react-scroll-section";
+import { socials } from "../contact/contacts";
 
 const AboutMe = () => {
 	const theme = useTheme();
+	const contact = useScrollSection('Contact');
 	return (
 		<Container css={css`
 		padding: ${theme.spacing(4)} 0;
@@ -63,7 +67,15 @@ const AboutMe = () => {
 									</Typography>
 								</Box>
 							</Fade>
-							<br/>
+
+							<Box sx={{textAlign: 'center'}}>
+								{
+									socials.filter( x => x.name === 'GitHub' || x.name === 'LinkedIn')
+									.map((item, index)=>
+									<IconButton component="a" href={item.link} target="_blank" key={"About-socials"+index} rel="noreferrer"> {item.icon}</IconButton>
+									)
+								}
+							</Box>
 							<Fade in={true} timeout={1000}>
 
 								<Typography>
@@ -77,7 +89,7 @@ const AboutMe = () => {
 							</Fade>
 						</Box>
 						<Fade in={true} timeout={1500}>
-							<Button color="secondary" variant="contained">Get in Touch</Button>
+							<Button color="secondary" variant="contained" onClick={contact.onClick}>Get in Touch</Button>
 						</Fade>
 					</Paper>
 				</Grid>
