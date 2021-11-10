@@ -37,8 +37,16 @@ const TabPanelView = (props) => {
 						word-wrap: break-word;
 						`}>
 							{
+								each.patent &&
+								<b>(Patent) </b>
+							}
+							{
+								each.copyright &&
+								<b>(Copyright) </b>
+							}
+							{
 								(each.patent || each.copyright) &&
-								`Registration Number: ${each.regNumber} `
+								`Registration Number: ${each.regNumber} | `
 							}
 							{each.citation}
 						</ListItemText>

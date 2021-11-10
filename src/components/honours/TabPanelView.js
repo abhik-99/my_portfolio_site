@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import {css} from "@emotion/react";
 import * as React from 'react';
 
 import { useTheme } from '@mui/system';
@@ -9,7 +8,6 @@ import {
   AccordionSummary,
   AccordionDetails,
   Grid,
-  Paper,
   Typography,
   Container
 } from "@mui/material";

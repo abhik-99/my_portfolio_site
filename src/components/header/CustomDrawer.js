@@ -10,11 +10,10 @@ import ListItemText from '@mui/material/ListItemText';
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-import navlist from './Navlist';
 import { useTheme } from '@emotion/react';
 
 export default function CustomDrawer(props) {
-  const {open, toggleDrawer} = props;
+  const {open, toggleDrawer, navSections} = props;
   const theme = useTheme();
   const list = () => (
     <Box
@@ -25,8 +24,8 @@ export default function CustomDrawer(props) {
     >
       <Divider />
       <List>
-        {navlist.map((link, index) => (
-          <ListItem button key={"drawer-"+index} onClick={link.onClick}>
+        {navSections.map((link, index) => (
+          <ListItem button key={"drawer-"+index} onClick={() => {link.onClick(); toggleDrawer(false);}}>
             <ListItemIcon>
               {link.icon}
             </ListItemIcon>

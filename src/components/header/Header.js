@@ -26,6 +26,35 @@ import {
 	useScrollSections,
 } from 'react-scroll-section';
 
+import useScrollTrigger from '@mui/material/useScrollTrigger';
+import Slide from '@mui/material/Slide';
+import PropTypes from 'prop-types';
+
+function HideOnScroll(props) {
+	const { children, window } = props;
+	// Note that you normally won't need to set the window ref as useScrollTrigger
+	// will default to window.
+	// This is only being set here because the demo is in an iframe.
+	const trigger = useScrollTrigger({
+	  target: window ? window() : undefined,
+	});
+
+	return (
+	  <Slide appear={false} direction="down" in={!trigger}>
+		{children}
+	  </Slide>
+	);
+}
+
+HideOnScroll.propTypes = {
+	children: PropTypes.element.isRequired,
+	/**
+	 * Injected by the documentation to work in an iframe.
+	 * You won't need it on your project.
+	 */
+	window: PropTypes.func,
+};
+
 const Header = (props) => {
 	const [open, setOpen] = React.useState(false);
 	const theme = useTheme();
@@ -41,52 +70,57 @@ const Header = (props) => {
 
 	console.log("HEADER Sections", navSections);
 	return (
-		<AppBar
-		color="primary"
-		position="static"
-		enableColorOnDark
-		>
-			<Toolbar sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-				<ButtonGroup variant="contained" color="secondary">
-					<Button>
-						<CircleOutlinedIcon onClick={theme1}/>
-					</Button>
-					<Button>
-						<ChangeHistoryOutlinedIcon onClick={theme2}/>
-					</Button>
-					<Button>
-						<StarBorderPurple500OutlinedIcon onClick={theme3}/>
-					</Button>
-					<Button>
-						<BeachAccessOutlinedIcon onClick={theme4}/>
-					</Button>
-				</ButtonGroup>
-				<Paper sx={{ background: 'none', display: {xs: 'block', md: 'none'}}} elevation={0}>
-					<IconButton variant="outlined" color="secondary" onClick={() => toggleDrawer(true)}>
-						<MoreVertTwoToneIcon />
-					</IconButton>
+		<>
+		<HideOnScroll {...props}>
+			<AppBar
+			color="primary"
+			// position="static"
+			enableColorOnDark
+			>
+				<Toolbar sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+					<ButtonGroup variant="contained" color="secondary">
+						<Button>
+							<CircleOutlinedIcon onClick={theme1}/>
+						</Button>
+						<Button>
+							<ChangeHistoryOutlinedIcon onClick={theme2}/>
+						</Button>
+						<Button>
+							<StarBorderPurple500OutlinedIcon onClick={theme3}/>
+						</Button>
+						<Button>
+							<BeachAccessOutlinedIcon onClick={theme4}/>
+						</Button>
+					</ButtonGroup>
+					<Paper sx={{ background: 'none', display: {xs: 'block', md: 'none'}}} elevation={0}>
+						<IconButton variant="outlined" color="secondary" onClick={() => toggleDrawer(true)}>
+							<MoreVertTwoToneIcon />
+						</IconButton>
+					</Paper>
+					<Paper sx={{ background: 'none', display: {xs: 'none', md: 'block', lg: 'none'}}} elevation={0}>
+						<Button variant="contained" color="secondary"  onClick={() => toggleDrawer(true)}>
+							<MenuIcon />
+						</Button>
+					</Paper>
+				</Toolbar>
+				<Paper sx={{background: "none", display: { xs: 'none', lg: 'block'}}} elevation={0}>
+					<Container>
+						<Stack direction="row" spacing={2} justifyContent="center">
+							{
+								navSections.map((link, index) =>
+								<Button variant="contained" css={css`text-transform: none; background: linear-gradient(to top, rgba(0, 0, 0, 0.2), ${theme.palette.primary.main})`} key={"nav" + index} onClick={link.onClick}>
+									<b>{link.name}</b>
+								</Button>
+								)
+							}
+						</Stack>
+					</Container>
 				</Paper>
-				<Paper sx={{ background: 'none', display: {xs: 'none', md: 'block', lg: 'none'}}} elevation={0}>
-					<Button variant="contained" color="secondary"  onClick={() => toggleDrawer(true)}>
-						<MenuIcon />
-					</Button>
-				</Paper>
-			</Toolbar>
-			<Paper sx={{background: "none", display: { xs: 'none', lg: 'block'}}} elevation={0}>
-				<Container>
-					<Stack direction="row" spacing={2} justifyContent="center">
-						{
-							navSections.map((link, index) =>
-							<Button variant="contained" css={css`text-transform: none; background: linear-gradient(to top, rgba(0, 0, 0, 0.2), ${theme.palette.primary.main})`} key={"nav" + index} onClick={link.onClick}>
-								<b>{link.name}</b>
-							</Button>
-							)
-						}
-					</Stack>
-				</Container>
-			</Paper>
-			<CustomDrawer open={open} toggleDrawer={toggleDrawer} />
-		</AppBar>
+			</AppBar>
+		</HideOnScroll>
+
+		<CustomDrawer open={open} toggleDrawer={toggleDrawer} navSections={navSections}/>
+		</>
 	)
 }
 

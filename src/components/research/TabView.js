@@ -37,7 +37,8 @@ const TabView = () => {
 							style: {
 							  display: "none"
 							}
-						}}>
+						}}
+						>
 							<Tab icon={<MenuBookTwoToneIcon />} aria-label="published" value="1" />
 							<Divider />
 							<Tab icon={<BorderColorTwoToneIcon />} aria-label="in press" value="2" />
@@ -48,17 +49,17 @@ const TabView = () => {
 					</Grid>
 					<Grid item xs={12} sm={9} ls={10}>
 						<TabPanel value="1" css={css`
-						padding-top: 0;
+						padding: 0;
 						`}>
 							<TabPanelView title="Published" dataList={papers.filter(paper => paper.published)}/>
 						</TabPanel>
 						<TabPanel value="2" css={css`
-						padding-top: 0;
+						padding: 0;
 						`}>
 							<TabPanelView title="In Press" dataList={papers.filter(paper => paper.inPress)}/>
 						</TabPanel>
 						<TabPanel value="3" css={css`
-						padding-top: 0;
+						padding: 0;
 						`}>
 							<TabPanelView title="Under Review" dataList={papers.filter(paper => paper.underReview)}/>
 						</TabPanel>

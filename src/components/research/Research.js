@@ -1,10 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import {css} from "@emotion/react";
 import {
+	ButtonBase,
 	Container,
 	Paper,
 	Typography,
-	useTheme
+	useTheme,
+	Grid
 } from "@mui/material";
 import Color from "color";
 
@@ -37,6 +39,24 @@ const Research = () => {
 					<Typography variant="h2">
 						Research
 					</Typography>
+					<Grid container spacing={2} align="center" marginY={theme.spacing(2)}
+					>
+						<Grid item xs={12} md={4}>
+							<ButtonBase href="https://orcid.org/0000-0003-3944-0778" target="_blank" rel="no-referrer">
+								<Typography>Orcid ID: 0000-0003-3944-0778</Typography>
+							</ButtonBase>
+						</Grid>
+						<Grid item xs={12} md={4}>
+							<ButtonBase href="https://scholar.google.com/citations?user=Cs24dywAAAAJ&hl=en" target="_blank" rel="no-referrer">
+								<Typography>Google Scholar</Typography>
+							</ButtonBase>
+						</Grid>
+						<Grid item xs={12} md={4}>
+							<ButtonBase>
+								<Typography>IEEE: abhik.b@ieee.org</Typography>
+							</ButtonBase>
+						</Grid>
+					</Grid>
 					<TabView />
 				</Paper>
 			</Container>

@@ -51,12 +51,17 @@ const AboutMe = () => {
 						<Box sx={{
 							textAlign: 'justify',
 							margin: theme.spacing(3),
-							marginTop: theme.spacing(10)
+							marginTop: {
+								md: theme.spacing(10),
+
+							}
 						}}>
 							<Fade in={true} timeout={900}>
-								<Typography variant="h3">
-									Abhik Banerjee
-								</Typography>
+								<Box sx={{ textAlign: 'center'}}>
+									<Typography variant="h3">
+										Abhik Banerjee
+									</Typography>
+								</Box>
 							</Fade>
 							<br/>
 							<Fade in={true} timeout={1000}>

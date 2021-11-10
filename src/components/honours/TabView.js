@@ -3,13 +3,12 @@ import {css} from "@emotion/react";
 import * as React from 'react';
 
 import Box from '@mui/material/Box';
-import { createTheme, useTheme } from '@mui/material/styles';
-import { Grid, Divider, Typography, Paper, Button, Stack } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { Grid, Typography, Button, Stack } from '@mui/material';
 
 
 import TabPanelView from "./TabPanelView";
 import Color from "color";
-import { papers } from '../research/papers';
 import { certificates, honours } from "./honours";
 import CardViewPanel from "./CardViewPanel";
 
@@ -18,7 +17,7 @@ const TabView = () => {
 	const [value, setValue] = React.useState(0);
 
 	return (
-		<Box sx={{ width: '100%', typography: 'body1', marginTop: theme.spacing(1) }}>
+		<Box sx={{ width: '100%', typography: 'body1', marginTop: theme.spacing(3) }}>
 				<Grid container spacing={1}>
 					<Grid item xs={12} sm={3}  lg={2}>
 					<Box sx={{ borderBottom: 1, borderColor: theme.palette.background.paper }}>

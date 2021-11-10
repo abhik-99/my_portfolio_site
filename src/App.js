@@ -3,7 +3,8 @@ import { useState } from "react";
 import {css} from "@emotion/react";
 import {
   Paper,
-  useMediaQuery
+  useMediaQuery,
+  Typography
 } from "@mui/material";
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 
@@ -24,6 +25,8 @@ import Header from "./components/header/Header";
 import Research from "./components/research/Research";
 import Blogs from "./components/blogs/Blogs";
 import Honours from "./components/honours/Honours";
+import Contact from "./components/contact/Contact";
+import { Box } from "@mui/system";
 
 function App() {
   const [themeMode, setThemeMode] = useState(true); // true -> light | false -> dark
@@ -40,6 +43,9 @@ function App() {
         main: themeMode ? "#880e4f" : "#651fff"
       }
     },
+    shape: {
+      borderRadius: 8
+    }
   });
 
   theme = createTheme(theme, {
@@ -71,7 +77,8 @@ function App() {
         background-attachment: fixed;
         background-position: center;
         background-size: cover;
-        background-color: ${Color(theme.palette.background.paper).darken(0.1).toString()}
+        background-color: ${Color(theme.palette.background.paper).darken(0.1).toString()};
+        padding-top: ${theme.spacing(10)}
         `}>
           <Section id="top">
             <Header theme1={() => { setThemeMode(true); setExtraMode(true);}} theme2={() => { setThemeMode(true); setExtraMode(false);}} theme3={() => { setThemeMode(false); setExtraMode(true);}} theme4={() => { setThemeMode(false); setExtraMode(false);}}/>
@@ -91,6 +98,12 @@ function App() {
           <Section id="Honours">
             <Honours />
           </Section>
+          <Section id="Contact">
+            <Contact />
+          </Section>
+          <Box sx={{align: "center"}}>
+            <Typography variant="caption2">Made By Abhik Banerjee using React and MUI v5. Open Sourced <a href="https://github.com/abhik-99/my_portfolio_site" target="_blank">here</a></Typography>
+          </Box>
         </Paper>
       </ThemeProvider>
     </ScrollingProvider>
